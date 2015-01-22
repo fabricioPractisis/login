@@ -1,30 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script src="../www/js/fontsize.js" type="text/javascript" charset="utf-8"></script>
-<script src="../www/js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="../www/js/jquery.mobile-1.4.2.min.js" type="text/javascript" charset="utf-  8"></script>
-<script src="index.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" charset="utf-8">
-app.initialize();
-    
- </script>
-</head>
-<body>
-<div class="txtwrapper">
-<div data-role="page">
-<div data-role="header">
-<h1>Example Page</h1>
-</div><!-- /header -->
-<div role="main" class="ui-content">
-    <p><a href="#" data-inline="button" data-role="button" data-ajax="false" onclick="showAlert(); return false;">Show Alert</a></p>
-</div><!-- /content -->
+  <head>
+    <title>Notification Example</title>
 
-</div><!-- /page -->
-</div><!-- /textWrapper -->
-</body>
+    <script type="text/javascript" charset="utf-8" src="index.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Empty
+    }
+
+    // alert dialog dismissed
+        function alertDismissed() {
+            // do something
+        }
+
+    // Show a custom alertDismissed
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    </script>
+  </head>
+  <body>
+    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+  </body>
 </html>
