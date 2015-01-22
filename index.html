@@ -14,9 +14,24 @@
 				function init() {
 					document.addEventListener("deviceready", deviceInfo, true);
 				}
-
+				
 				function triggerLogin(){
-					alert("hola q hace");
+					var usuario = $('#usuario').val();
+					var pass = $('#pass').val();
+					$.ajax({
+						type: 'POST',
+						url: 'https://162.242.162.119/loginPhoneGap.php',
+						crossDomain: true,
+						data : 'usuario='+ usuario+'&pass='+ pass,
+						dataType: 'json',
+						success: function(respueta) {
+							alert(respuesta)
+						},
+						error: function (respuesta) {
+							alert('POST failed.');
+						}
+					});
+					
 				}
 			</script>
 			
@@ -24,7 +39,7 @@
 		<body>
 			<table width='100%' height='100%'>
 				<tr>
-					<td valign='middle' align='center'>
+					<td valign='top' align='center'>
 						<div id="login" style="margin-top: 135.5px;">
 							<div style="text-align: left;">
 								<img src="practisisgrey.png" width='40%'>
