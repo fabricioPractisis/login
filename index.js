@@ -46,3 +46,14 @@ receivedElement.setAttribute('style', 'display:block;');
 console.log('Received Event: ' + id);
 }
 };
+function showAlert() {
+      navigator.notification.alert(
+       'Message box please display....', // message
+       altertDismissed,             // no callback
+       'Message Box Title',         // title
+       'Continue'                   // button texr
+    );
+    }
+    function  altertDismissed(){
+       navigator.notification.alert("alert box is dismissed");
+    }
