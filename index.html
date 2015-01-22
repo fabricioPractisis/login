@@ -1,25 +1,49 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>PhoneGap</title>
-<script>
-	function init() {
-    // the next line makes it impossible to see Contacts on the HTC Evo since it
-    // doesn't have a scroll button
-    // document.addEventListener("touchmove", preventBehavior, false);
-    document.addEventListener("deviceready", deviceInfo, true);
-}
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8" />
+			<meta name="format-detection" content="telephone=no" />
+			<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+			<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+			<meta name="msapplication-tap-highlight" content="no" />
+			<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+			<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+			<link rel="stylesheet" type="text/css" href="index.css" />
+			<title>login</title>
+			<script type="text/javascript">
+				function init() {
+					document.addEventListener("deviceready", deviceInfo, true);
+				}
 
-function msg()
-{
-    alert("button clicked");
-}
-</script>
-</head>
-<body onload="init()";>
-    <h1>Hello World</h1>
-    <form>
-        <input type="button" value="Click me" onclick="msg()" />
-    </form>
-</body>
-</html>
+				function triggerLogin(){
+					alert("hola q hace");
+				}
+			</script>
+			
+		</head>
+		<body>
+			<table width='100%' height='100%'>
+				<tr>
+					<td valign='middle' align='center'>
+						<div id="login" style="margin-top: 135.5px;">
+							<div style="text-align: left;">
+								<img src="practisisgrey.png" width='40%'>
+							</div>
+							<input type="text" autofocus="" placeholder="User name or Email" class="formFieldsLogin" name="usuario" id="usuario">
+							<br>
+							<input type="password" placeholder="Password" class="formFieldsLogin" name="pass" id="pass">
+							<div onclick="triggerLogin(); return false;" onmouseout="$(this).css('opacity','1');" onmouseover="$(this).css('opacity','0.8');" id="loginButton">
+								<table width='100%' height='100%'>
+									<tr>
+										<td valign='middle' align='center'>
+											Login
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</body>
+	</html>
