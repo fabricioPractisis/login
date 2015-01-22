@@ -34,7 +34,7 @@ document.addEventListener('deviceready', this.onDeviceReady, false);
 // function, we must explicitly call 'app.receivedEvent(...);'
 onDeviceReady: function() {
 app.receivedEvent('deviceready');
-triggerLogin();
+$("#loginButton").on("touchend", function () { alert("message"); });
 },
 // Update DOM on a Received Event
 receivedEvent: function(id) {
@@ -46,8 +46,3 @@ receivedElement.setAttribute('style', 'display:block;');
 console.log('Received Event: ' + id);
 }
 };
-function triggerLogin(){
-				var usuario = $('#usuario').val();
-				var pass = $('#pass').val();
-				alert(usuario +'@'+ pass);
-			}
