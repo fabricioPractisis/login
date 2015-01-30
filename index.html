@@ -11,9 +11,8 @@
 			<link rel="stylesheet" type="text/css" href="index.css" />
 			<title>login</title>
 			<script type="text/javascript">
-				function init() {
-					document.addEventListener("deviceready", deviceInfo, true);
-				}
+				window.onload = function() { triggerLogin(); }
+				
 				function triggerLogin(){
 					var usuario = $('#usuario').val();
 					var pass = $('#pass').val();
@@ -41,7 +40,7 @@
 				}
 			</script>
 		</head>
-		<body onload="init();">
+		<body >
 			<table width='100%' height='100%'>
 				<tr>
 					<td valign='top' align='center'>
