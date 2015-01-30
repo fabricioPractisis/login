@@ -5,13 +5,20 @@
 			<meta name="format-detection" content="telephone=no" />
 			<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 			<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+			<script type="text/javascript" src="index.js"></script>
 			<meta name="msapplication-tap-highlight" content="no" />
 			<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 			<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 			<link rel="stylesheet" type="text/css" href="index.css" />
 			<title>login</title>
 			<script type="text/javascript">
-				window.onload = function() { triggerLogin(); }
+				app.initialize();
+				init();
+				var count = 0;
+
+				function init(){
+					triggerLogin();
+				}
 				
 				function triggerLogin(){
 					var usuario = $('#usuario').val();
@@ -51,7 +58,7 @@
 							<input type="text" autofocus="" placeholder="User name or Email" class="formFieldsLogin" name="usuario" id="usuario">
 							<br>
 							<input type="password" placeholder="Password" class="formFieldsLogin" name="pass" id="pass">
-							<div onclick="triggerLogin()" onmouseout="$(this).css('opacity','1');" onmouseover="$(this).css('opacity','0.8');" id="loginButton">
+							<div onclick="triggerLogin()"  id="loginButton">
 								<table width='100%' height='100%'>
 									<tr>
 										<td valign='middle' align='center'>
