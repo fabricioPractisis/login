@@ -1,82 +1,94 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="msapplication-tap-highlight" content="no" />
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-<title>MicroShip</title>
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="index.js"></script>
-<link rel="stylesheet" type="text/css" href="index.css" />
-<style type="text/css">
-html,body{
-	margin : 0px;
-	padding: 0px;
-	font-family: Helvetica,Arial;
-	}
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;" />
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<title>MicroShip</title>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css" />
+	<style type="text/css">
+		html,body{
+		margin : 0px;
+		padding: 0px;
+		font-family: Helvetica,Arial;
+		}
 	
-.main {
-	width: 480px;
-	max-height: 780px; 
-	overflow: hidden;
-	}
-</style>
-<script>
-app.initialize();
-init();
-function triggerLogin(){
-					var usuario = $('#usuario').val();
-					var pass = $('#pass').val();
-					$.post('https://www.practisis.net/loginPhoneGap.php',{
-						usuario : usuario , pass : pass 
-					}).done(function(json){
-						var obj=jQuery.parseJSON(json);
-						
-						var busqueda= obj.Search;
-						if($.trim(json)=='{"sesiones": [{"clave": "","practisisdos": "","cl": "","user_name": "","user_email": "","company_name": ""}]}'){
-							alert('Usuario Incorrecto');
-							window.location='';
-						}else{
-							for(i=0; i<= (obj.sesiones.length -1); i++){
-								var clave= obj.sesiones[i].clave;
-								var practisisdos= obj.sesiones[i].practisisdos;
-								var cl= obj.sesiones[i].cl;
-								var user_name= obj.sesiones[i].user_name;
-								var user_email= obj.sesiones[i].user_email;
-								var company_name= obj.sesiones[i].company_name;
-							}
-							alert('Usuario Verificado');
-						}
-					});
+		.main {
+			width: 480px;
+			max-height: 780px; 
+			overflow: hidden;
+		}
+
+		a{
+			color:black;
+			display:block;
+			margin:10px 0px;
+		}
+    </style>
+
+    <script type="text/javascript">
+      function onload() {
+        document.getElementById('touchstart').addEventListener('touchstart', login, false);
+        
+      }
+
+      function login() {
+        var usuario = $('#usuario').val();
+		var pass = $('#pass').val();
+		$.post('https://www.practisis.net/loginPhoneGap.php',{
+			usuario : usuario , pass : pass 
+		}).done(function(json){
+			var obj=jQuery.parseJSON(json);
+			
+			var busqueda= obj.Search;
+			if($.trim(json)=='{"sesiones": [{"clave": "","practisisdos": "","cl": "","user_name": "","user_email": "","company_name": ""}]}'){
+				alert('Usuario Incorrecto');
+				window.location='';
+			}else{
+				for(i=0; i<= (obj.sesiones.length -1); i++){
+					var clave= obj.sesiones[i].clave;
+					var practisisdos= obj.sesiones[i].practisisdos;
+					var cl= obj.sesiones[i].cl;
+					var user_name= obj.sesiones[i].user_name;
+					var user_email= obj.sesiones[i].user_email;
+					var company_name= obj.sesiones[i].company_name;
 				}
-</script>
-</head>
-<body>
-	<div style="padding: 0px; margin: 0px; width: 480px;">
+				alert('Usuario Verificado');
+			}
+		});
+      }
+    </script>
+
+    <title>Touch Example</title>
+  </head>
+  <body onload="onload();">
+    <div style="padding: 0px; margin: 0px; width: 480px;">
 		<table width='100%' height='100%'>
-				<tr>
-					<td valign='top' align='center'>
-						<div id="login" style="margin-top: 135.5px;">
-							<div style="text-align: left;">
-								<img src="practisisgrey.png" width='40%'>
-							</div>
-							<input type="text" autofocus="" placeholder="User name or Email" class="formFieldsLogin" name="usuario" id="usuario">
-							<br>
-							<input type="password" placeholder="Password" class="formFieldsLogin" name="pass" id="pass">
-							<div onclick="triggerLogin()"  id="loginButton">
-								<table width='100%' height='100%'>
-									<tr>
-										<td valign='middle' align='center'>
-											Login
-										</td>
-									</tr>
-								</table>
-							</div>
+			<tr>
+				<td valign='top' align='center'>
+					<div id="login" style="margin-top: 135.5px;">
+						<div style="text-align: left;">
+							<img src="practisisgrey.png" width='40%'>
 						</div>
-					</td>
-				</tr>
-			</table>
+						<input type="text" autofocus="" placeholder="User name or Email" class="formFieldsLogin" name="usuario" id="usuario">
+						<br>
+						<input type="password" placeholder="Password" class="formFieldsLogin" name="pass" id="pass">
+						<div ontouchstart="hello();return false;"  id="loginButton">
+							<table width='100%' height='100%'>
+								<tr>
+									<td valign='middle' align='center'>
+										Login
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
 	</div>
-</body>
-</html> 
+  </body>
